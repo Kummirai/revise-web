@@ -2,7 +2,7 @@ import React from "react";
 
 function Subject({ subject }) {
   return (
-    <div className="card bg-base-100 shadow-sm">
+    <div className="card bg-base-100  shadow-sm">
       <div className="h-60">
         <img
           src={subject.image}

@@ -1,6 +1,9 @@
+import FAQ from "@/components/FAQ";
+import GetFullAcess from "@/components/GetFullAcess";
 import Hero from "@/components/Hero";
 import Plans from "@/components/Plans";
 import Subject from "@/components/Subject";
+import Testimonial from "@/components/Testimonial";
 
 export default function Home() {
   const subjects = [
@@ -262,16 +265,14 @@ export default function Home() {
         </div>
       </div>
 
-      <div>
-        <h2 className="text-3xl font-bold text-center pt-10">
-          Join Any of our plans
-        </h2>
-        <div className="p-10 grid sm:grid-cols-3 gap-10">
-          <Plans />
-          <Plans />
+      <div className="">
+        <div className="p-10">
           <Plans />
         </div>
       </div>
+      <Testimonial />
+      <FAQ />
+      <GetFullAcess />
     </>
   );
 }
