@@ -1,14 +1,19 @@
+import Link from "next/link";
 import React from "react";
 
-function SubjectCard() {
+function SubjectCard({ subject }) {
   return (
     <div>
       <div className="card w-96 bg-base-100 shadow-sm">
         <div className="card-body">
-          <span className="badge badge-xs badge-warning">Most Popular</span>
+          <span className="badge badge-xs badge-warning">
+            Grade {subject.grade_range_start} - {subject.grade_range_end}
+          </span>
           <div className="flex justify-between">
-            <h2 className="text-3xl font-bold">Premium</h2>
-            <span className="text-xl">$29/mo</span>
+            <h2 className="text-3xl font-bold line-clamp-1">
+              {subject.subject_name}
+            </h2>
+            {/* <span className="text-xl">Grade {subject.grade_range_start}</span> */}
           </div>
           <ul className="mt-6 flex flex-col gap-2 text-xs">
             <li>
@@ -26,7 +31,7 @@ function SubjectCard() {
                   d="M5 13l4 4L19 7"
                 />
               </svg>
-              <span>High-resolution image generation</span>
+              <span>{subject.description}</span>
             </li>
             <li>
               <svg
@@ -117,7 +122,12 @@ function SubjectCard() {
             </li>
           </ul>
           <div className="mt-6">
-            <button className="btn btn-primary btn-block">Subscribe</button>
+            <Link
+              href={`/practice_exercises/subject/${subject.subject_name}`}
+              className="btn btn-primary btn-block"
+            >
+              Exercises
+            </Link>
           </div>
         </div>
       </div>
