@@ -2,14 +2,13 @@ import React from "react";
 
 function SelectTopic({ topic }) {
   return (
-    <a
+    <p
       key={topic.topic_id}
-      href="#"
-      title=""
-      className="flex items-center px-4 py-2.5 text-sm font-medium text-white transition-all duration-200 bg-indigo-600 rounded-lg group"
+      className="hover:underline hover:text-blue-500 hover:cursor-pointer  "
     >
-      {topic.topic_name}
-    </a>
+      <span className="mr-1">{topic.chapter_number}.</span>
+      <span>{topic.topic_name}</span>
+    </p>
   );
 }
 

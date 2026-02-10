@@ -1,6 +1,6 @@
-import SubjectCard from "@/components/practice_exercises/SubjectCard";
+import SubjectCard from "../../components/practice_exercises/SubjectCard";
 import React from "react";
-import { createServerClient } from "@/utils/supabase/server";
+import { createServerClient } from "../../utils/supabase/server";
 import { cookies } from "next/headers";
 
 async function page() {

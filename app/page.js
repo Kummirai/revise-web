@@ -1,9 +1,9 @@
-import FAQ from "@/components/home/FAQ";
-import GetFullAcess from "@/components/home/GetFullAcess";
-import Hero from "@/components/home/Hero";
-import Plans from "@/components/home/Plans";
-import Subject from "@/components/home/Subject";
-import Testimonial from "@/components/home/Testimonial";
+import FAQ from "../components/home/FAQ";
+import GetFullAcess from "../components/home/GetFullAcess";
+import Hero from "../components/home/Hero";
+import Plans from "../components/home/Plans";
+import Subject from "../components/home/Subject";
+import Testimonial from "../components/home/Testimonial";
 
 export default function Home() {
   const subjects = [
