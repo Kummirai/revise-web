@@ -1,4 +1,3 @@
-import GradeTab from "@/components/practice_exercises/GradeTab";
 import SubjectCard from "@/components/practice_exercises/SubjectCard";
 import React from "react";
 import { createServerClient } from "@/utils/supabase/server";
@@ -9,13 +8,13 @@ async function page() {
   const supabase = createServerClient(cookieStore);
 
   const { data: subjects } = await supabase.from("subjects").select();
-  console.log(subjects);
 
   return (
     <div>
-      <GradeTab />
-      <div className="pt-10 p-20">
-        <SubjectCard />
+      <div className="pt-10 p-20 grid grid-cols-3 gap-5">
+        {subjects.map((subject) => {
+          return <SubjectCard key={subject.subject_id} subject={subject} />;
+        })}
       </div>
     </div>
   );
