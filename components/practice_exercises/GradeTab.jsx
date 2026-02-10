@@ -2,7 +2,7 @@
 
 import React from "react";
 
-function GradeTab({ handleGradeSeven }) {
+function GradeTab({ handleGrade }) {
   const grades = [
     { id: 3, grade: 3 },
     { id: 4, grade: 4 },
@@ -27,7 +27,7 @@ function GradeTab({ handleGradeSeven }) {
                 ? "btn btn-outline btn-info"
                 : "btn btn-outline btn-error"
             }
-            onClick={handleGradeSeven}
+            onClick={() => handleGrade(grade.grade)}
           >
             <span>Grade</span>
             <span>{grade.grade}</span>

@@ -11,7 +11,7 @@ async function page() {
 
   return (
     <div>
-      <div className="pt-10 p-20 grid grid-cols-3 gap-5">
+      <div className="pt-10 sm:p-20 grid sm:grid-cols-3 gap-5">
         {subjects.map((subject) => {
           return <SubjectCard key={subject.subject_id} subject={subject} />;
         })}

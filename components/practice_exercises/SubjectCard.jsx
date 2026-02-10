@@ -123,7 +123,7 @@ function SubjectCard({ subject }) {
           </ul>
           <div className="mt-6">
             <Link
-              href={`/practice_exercises/subject/${subject.subject_name}`}
+              href={`/practice_exercises/subject/${subject.subject_name}/${subject.subject_id}`}
               className="btn btn-primary btn-block"
             >
               Exercises
