@@ -25,16 +25,15 @@ export default async function Home() {
     <>
       <Hero />
       <div>
-        <div className="mt-15 max-w-xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-black lg:text-5xl sm:text-5xl">
+        <div className="flex flex-col items-center mt-10">
+          <h1 className="font-medium text-4xl md:text-[48px] text-slate-800 text-center">
             Subjects
-          </h2>
-          <p className="mt-4 text-lg leading-relaxed text-gray-600">
-            Amet minim mollit non deserunt ullam co est sit aliqua dolor do amet
-            sint. Velit officia consequat duis enim velit mollit.
+          </h1>
+          <p className="text-base/7 text-zinc-500 max-w-sm text-center mt-4">
+            Choose a plan that supports your business growth and digital goals.
           </p>
         </div>
-        <div className="p-10 grid sm:grid-cols-3 gap-10">
+        <div className="sm:p-10 p-5 grid sm:grid-cols-3 gap-10">
           {subjects.map((subject, index) => {
             return index < 6 ? (
               <Subject key={subject.subject_id} subject={subject} />

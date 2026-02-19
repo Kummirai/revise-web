@@ -2,7 +2,7 @@ import React from "react";
 
 function Subject({ subject }) {
   return (
-    <div className="card w-96 bg-base-100 card-md shadow-sm">
+    <div className="card sm:w-96 bg-base-100 card-md shadow-sm">
       <div className="card-body">
         <h2 className="card-title">{subject.subject_name}</h2>
         <p>{subject.description}</p>
