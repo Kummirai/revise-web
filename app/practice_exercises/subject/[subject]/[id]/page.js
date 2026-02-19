@@ -1,28 +1,30 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import SelectTopic from "../../../../../components/practice_exercises/SelectTopic";
-import { headers } from "next/headers";
+import Question from "../../../../../components/practice_exercises/Question";
 
-async function page({ params, searchParams }) {
-  const { id } = await params;
+function page({ params, searchParams }) {
+  const { id } = React.use(params);
 
-  const headersList = await headers();
-  const protocol = headersList.get("x-forwarded-proto") || "http";
-  const host = headersList.get("host");
-  const baseUrl = `${protocol}://${host}`;
+  const [questions, setQuestions] = useState([]);
+  const [topics, setTopics] = useState([]);
 
-  const response = await fetch(
-    `${baseUrl}/api/exercises/topics/${parseInt(id)}`,
-    {
-      cache: "no-store",
-    },
-  );
+  const handleSelectTopic = async (id) => {
+    const response = await fetch(`http://localhost:3000/api/questions/${id}`);
+    const data = await response.json();
+    setQuestions(data.questions);
+  };
 
-  if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`);
-  }
-
-  const data = await response.json();
-  const topics = data.topics;
+  useEffect(() => {
+    const getTopics = async () => {
+      const response = await fetch(
+        `http://localhost:3000/api/exercises/topics/${parseInt(id)}`,
+      );
+      const data = await response.json();
+      setTopics(data.topics);
+    };
+    getTopics();
+  }, [id]);
 
   return (
     <div className="px-15 py-5">
@@ -32,9 +34,23 @@ async function page({ params, searchParams }) {
             <div className="flex flex-col flex-1 px-3 mt-6">
               <div className="space-y-4">
                 <nav className="flex-1 space-y-2 h-screen grid grid-cols-1">
-                  {topics.map((topic) => {
-                    return <SelectTopic key={topic.topic_id} topic={topic} />;
-                  })}
+                  {topics.length > 0 ? (
+                    topics.map((topic) => {
+                      return (
+                        <SelectTopic
+                          key={topic.topic_id}
+                          topic={topic}
+                          handleSelectTopic={handleSelectTopic}
+                        />
+                      );
+                    })
+                  ) : (
+                    <div className="flex flex-col items-center justify-around">
+                      <span className="loading loading-spinner text-primary"></span>
+                      <span className="loading loading-spinner text-secondary"></span>
+                      <span className="loading loading-spinner text-accent"></span>
+                    </div>
+                  )}
                 </nav>
               </div>
             </div>
@@ -45,7 +61,11 @@ async function page({ params, searchParams }) {
           <main>
             <div className="py-6">
               <div className="px-4 mx-auto max-w-7xl sm:px-6 md:px-8">
-                No topic select yet!
+                {!questions ? (
+                  <div>No topic selected yet</div>
+                ) : (
+                  <Question questions={questions} />
+                )}
               </div>
             </div>
           </main>

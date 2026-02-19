@@ -2,19 +2,12 @@ import React from "react";
 
 function Subject({ subject }) {
   return (
-    <div className="card bg-base-100  shadow-sm">
-      <div className="h-60">
-        <img
-          src={subject.image}
-          alt="Shoes"
-          className="h-full w-full object-cover rounded-s"
-        />
-      </div>
+    <div className="card w-96 bg-base-100 card-md shadow-sm">
       <div className="card-body">
-        <h2 className="card-title">{subject.name}</h2>
+        <h2 className="card-title">{subject.subject_name}</h2>
         <p>{subject.description}</p>
-        <div className="card-actions justify-end">
-          <button className="btn btn-primary">More details</button>
+        <div className="justify-end card-actions">
+          <button className="btn btn-warning">More Subjects</button>
         </div>
       </div>
     </div>

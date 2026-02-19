@@ -205,7 +205,7 @@ function Footer() {
 
             <form action="#" method="POST" className="mt-6">
               <div>
-                <label for="email" className="sr-only">
+                <label htmlFor="email" className="sr-only">
                   Email
                 </label>
                 <input
