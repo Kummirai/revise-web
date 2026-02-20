@@ -1,13 +1,25 @@
-import React from "react";
+"use client";
+import { usePathname } from "next/navigation";
 
 function Plans() {
+  const pathName = usePathname();
   return (
     <section className=" bg-white">
-      <div className="flex flex-col items-center mb-10">
-        <h1 className="font-medium text-4xl md:text-[52px] text-slate-800 text-center">
-          Flexible Pricing Plans
-        </h1>
-        <p className="text-base/7 text-zinc-500 max-w-sm text-center mt-4">
+      <div className="flex flex-col items-center m-10">
+        <h2 className="font-medium text-4xl md:text-[52px] text-slate-800 text-center">
+          {pathName === "/plan" ? (
+            <span>Select your plan</span>
+          ) : (
+            <span>Flexible Pricing Plans</span>
+          )}
+        </h2>
+        <p
+          className={
+            pathName === "/plan"
+              ? "hidden"
+              : "text-base/7 text-zinc-500 max-w-sm text-center mt-4"
+          }
+        >
           Choose a plan that supports your business growth and digital goals.
         </p>
       </div>
