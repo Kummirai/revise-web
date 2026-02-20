@@ -97,13 +97,13 @@ function Plans() {
           </ul>
           <button
             type="button"
-            className="bg-indigo-500 text-sm w-full py-2 rounded text-white font-medium mt-7 hover:bg-indigo-600 transition-all"
+            className="bg-slate-800 text-sm w-full py-2 rounded text-white font-medium mt-7 hover:bg-slate-600 transition-all"
           >
             Get Started
           </button>
         </div>
 
-        <div className="w-72 bg-indigo-500 relative text-center text-white border border-gray-500/30 p-6 pb-14 rounded-lg">
+        <div className="w-72 bg-slate-500 relative text-center text-white border border-gray-500/30 p-6 pb-14 rounded-lg">
           <p className="absolute px-3 text-sm -top-3.5 left-3.5 py-1 bg-[#8789FB] rounded-full">
             Most Popular
           </p>
@@ -220,7 +220,7 @@ function Plans() {
           </ul>
           <button
             type="button"
-            className="bg-white text-sm w-full py-2 rounded text-indigo-500 font-medium mt-7 hover:bg-gray-200 transition-all"
+            className="bg-white text-sm w-full py-2 rounded text-slate-800 font-medium mt-7 hover:bg-gray-200 transition-all"
           >
             Get Started
           </button>
@@ -343,7 +343,7 @@ function Plans() {
           </ul>
           <button
             type="button"
-            className="bg-indigo-500 text-sm w-full py-2 rounded text-white font-medium mt-7 hover:bg-indigo-600 transition-all"
+            className="bg-slate-800 text-sm w-full py-2 rounded text-white font-medium mt-7 hover:bg-slate-600 transition-all"
           >
             Get Started
           </button>

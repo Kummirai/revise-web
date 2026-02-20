@@ -33,7 +33,7 @@ export default async function Home() {
             Choose a plan that supports your business growth and digital goals.
           </p>
         </div>
-        <div className="sm:p-10 p-5 grid sm:grid-cols-3 gap-10">
+        <div className="sm:p-20 p-5 grid sm:grid-cols-2 md:grid-cols-3 gap-10">
           {subjects.map((subject, index) => {
             return index < 6 ? (
               <Subject key={subject.subject_id} subject={subject} />
