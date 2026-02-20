@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-function Navbar() {
+function Navbar({}) {
   const links = [
     {
       name: "Home",
@@ -13,17 +13,16 @@ function Navbar() {
       href: "/practice_exercises",
     },
     {
-      name: "About Us",
-      href: "/about",
-    },
-    {
       name: "Exams",
       href: "/exams",
+    },
+    {
+      name: "About Us",
+      href: "/about",
     },
   ];
 
   const pathName = usePathname();
-  console.log(pathName);
 
   return (
     <nav className="flex items-center justify-between p-4 border-b border-slate-200 md:px-16 lg:px-24 xl:px-32 w-full">
@@ -52,26 +51,34 @@ function Navbar() {
         id="menu"
         className="max-md:absolute max-md:top-0 max-md:z-10 max-md:left-0 max-md:w-0 max-md:transition-all max-md:duration-300 max-md:overflow-hidden max-md:h-full max-md:bg-white/50 max-md:backdrop-blur max-md:flex-col max-md:justify-center flex items-center gap-8 font-medium"
       >
-        {links.map((link) => {
-          const isActive =
-            pathName === link.href ||
-            (pathName.startsWith(link.href) && link.href !== "/");
-          return (
-            <Link
-              key={link.name}
-              href={link.href}
-              className={
-                isActive ? " font-bold text-gray-800 " : "hover:text-gray-500"
-              }
-            >
-              {link.name}
-            </Link>
-          );
-        })}
+        {pathName === "/login" || pathName === "/signup"
+          ? ""
+          : links.map((link) => {
+              const isActive =
+                pathName === link.href ||
+                (pathName.startsWith(link.href) && link.href !== "/");
+              return (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className={
+                    isActive
+                      ? " font-bold text-gray-800 "
+                      : "hover:text-gray-500"
+                  }
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
+        {pathName === "/login" || pathName === "/signup" ? (
+          ""
+        ) : (
+          <button className="md:hidden bg-slate-800 hover:bg-slate-900 text-white px-8 py-3 rounded-full font-medium transition">
+            Login
+          </button>
+        )}
 
-        <button className="md:hidden bg-slate-800 hover:bg-slate-900 text-white px-8 py-3 rounded-full font-medium transition">
-          Login
-        </button>
         <button
           id="close-menu"
           className="md:hidden bg-gray-900 hover:bg-gray-800 text-white p-2 rounded-md aspect-square font-medium transition"
@@ -92,11 +99,19 @@ function Navbar() {
           </svg>
         </button>
       </div>
-      <Link href={"/login"}>
-        <button className="hidden md:block bg-slate-800 hover:bg-slate-900 text-white px-6 py-2.5 rounded-full font-medium transition cursor-pointer">
-          Login
-        </button>
-      </Link>
+      {pathName === "/login" || pathName === "/signup" ? (
+        ""
+      ) : (
+        <Link href={"/login"}>
+          <button
+            className={
+              "hidden md:block bg-slate-800 hover:bg-slate-900 text-white px-6 py-2.5 rounded-full font-medium transition cursor-pointer"
+            }
+          >
+            Login
+          </button>
+        </Link>
+      )}
 
       <button
         id="open-menu"
