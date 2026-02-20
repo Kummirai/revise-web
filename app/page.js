@@ -1,9 +1,9 @@
-import FAQ from "../components/home/FAQ";
-import GetFullAcess from "../components/home/GetFullAcess";
-import Hero from "../components/home/Hero";
-import Plans from "../components/home/Plans";
-import Subject from "../components/home/Subject";
-import Testimonial from "../components/home/Testimonial";
+import FAQ from "@/components/home/FAQ";
+import GetFullAcess from "@/components/home/GetFullAcess";
+import Hero from "@/components/home/Hero";
+import Plans from "@/components/home/Plans";
+import Subject from "@/components/home/Subject";
+import Testimonial from "@/components/home/Testimonial";
 import { headers } from "next/headers";
 
 export default async function Home() {

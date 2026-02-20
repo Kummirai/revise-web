@@ -37,7 +37,7 @@ function notFound() {
             <path
               d="M1 5.5h13.092M8.949 1l5.143 4.5L8.949 10"
               stroke="#1F2937"
-              stroke-width="1.5"
+              strokeWidth="1.5"
               stroke-linecap="round"
               stroke-linejoin="round"
             />
