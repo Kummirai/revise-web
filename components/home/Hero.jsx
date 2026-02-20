@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -31,25 +32,27 @@ export default function Hero() {
         A high-performance, serverless Postgres database that helps you ship
         fast and scale without limits.
       </p>
-
-      <button className="flex items-center gap-2 bg-slate-800 hover:bg-slate-900 text-white px-8 py-3 mt-8 rounded-full transition">
-        <span>get started for free</span>
-        <svg
-          width="20"
-          height="20"
-          viewBox="0 0 20 20"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M4.166 10h11.667m0 0L9.999 4.167M15.833 10l-5.834 5.834"
-            stroke="#fff"
-            strokeWidth="1.8"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </button>
+      <Link href={"/login"}>
+        {" "}
+        <button className="flex items-center gap-2 bg-slate-800 hover:bg-slate-900 text-white px-8 py-3 mt-8 rounded-full transition cursor-pointer">
+          <span>get started for free</span>
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4.166 10h11.667m0 0L9.999 4.167M15.833 10l-5.834 5.834"
+              stroke="#fff"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
+      </Link>
 
       <div className="bg-linear-to-t from-indigo-500/40 to-slate-200 p-px rounded-md mt-8">
         <div className="flex items-center gap-4 bg-white rounded-md px-4 py-3">

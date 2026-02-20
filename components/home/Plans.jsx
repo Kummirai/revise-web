@@ -12,8 +12,8 @@ function Plans() {
         </p>
       </div>
 
-      <div className="flex flex-wrap items-center justify-center gap-6">
-        <div className="w-72 bg-white text-center text-gray-800/80 border border-gray-200 p-6 pb-16 rounded-lg">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 sm:p-20 md:p-10">
+        <div className=" bg-white text-center text-gray-800/80 border border-gray-200 p-6 pb-16 rounded-lg">
           <p className="font-semibold">Basic</p>
           <h1 className="text-3xl font-semibold">
             R39<span className="text-gray-500 text-sm font-normal">/month</span>
@@ -103,7 +103,7 @@ function Plans() {
           </button>
         </div>
 
-        <div className="w-72 bg-slate-500 relative text-center text-white border border-gray-500/30 p-6 pb-14 rounded-lg">
+        <div className=" bg-slate-800 relative text-center text-white border border-gray-500/30 p-6 pb-14 rounded-lg">
           <p className="absolute px-3 text-sm -top-3.5 left-3.5 py-1 bg-[#8789FB] rounded-full">
             Most Popular
           </p>
@@ -226,7 +226,7 @@ function Plans() {
           </button>
         </div>
 
-        <div className="w-72 bg-white text-center text-gray-800/80 border border-gray-200 p-6 rounded-lg">
+        <div className=" bg-white text-center text-gray-800/80 border border-gray-200 p-6 rounded-lg">
           <p className="font-semibold">Enterprise</p>
           <h1 className="text-3xl font-semibold">
             R199
