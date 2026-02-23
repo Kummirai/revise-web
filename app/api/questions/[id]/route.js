@@ -1,5 +1,4 @@
-import { createServerClient } from "../../../../utils/supabase/server";
-import { cookies } from "next/headers";
+import { query } from "@/lib/db";
 import { NextResponse } from "next/server";
 
 export async function GET(request, { params }) {
@@ -13,19 +12,10 @@ export async function GET(request, { params }) {
       );
     }
 
-    const cookieStore = await cookies();
-    const supabase = createServerClient(cookieStore);
-
-    const { data: questions, error } = await supabase
-      .from("questions")
-      .select()
-      .eq("topic_id", parseInt(id));
-
-    if (error) {
-      console.error("Supabase error:", error);
-      return NextResponse.json({ error: error.message }, { status: 500 });
-    }
-    console.log(questions);
+    const questions = await query(
+      `SELECT * FROM questions WHERE topic_id = $1`,
+      [id],
+    );
 
     return NextResponse.json({ questions });
   } catch (error) {

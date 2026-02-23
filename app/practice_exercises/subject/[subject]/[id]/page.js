@@ -9,21 +9,38 @@ function page({ params, searchParams }) {
   const [questions, setQuestions] = useState([]);
   const [topics, setTopics] = useState([]);
 
-  // const handleSelectTopic = async (id) => {
-  //   const response = await fetch(`http://localhost:3000/api/questions/${id}`);
-  //   const data = await response.json();
-  //   setQuestions(data.questions);
-  // };
+  const handleSelectTopic = async (id) => {
+    const response = await fetch(`http://localhost:3000/api/questions/${id}`);
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error || `HTTP error! status: ${response.status}`);
+    }
+    console.log(data);
+
+    setQuestions(data.questions.rows);
+  };
 
   useEffect(() => {
     const getTopics = async () => {
       const response = await fetch(
-        `http://localhost:3000/api/exercises/topics/${parseInt(id)}`,
+        `http://localhost:3000/api/exercises/topics/${id}`,
       );
-      const data = await response.json();
-      console.log(data);
 
-      setTopics(data.topics);
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || `HTTP error! status: ${response.status}`);
+      }
+
+      const topics = data.topics?.rows || [];
+
+      if (topics.length === 0) {
+        console.log("No topics found");
+        return [];
+      }
+
+      setTopics(data.topics.rows);
     };
     getTopics();
   }, [id]);
@@ -60,7 +77,7 @@ function page({ params, searchParams }) {
         </div>
 
         <div className="flex flex-col flex-1">
-          {/* <main>
+          <main>
             <div className="py-6">
               <div className="px-4 mx-auto max-w-7xl sm:px-6 md:px-8">
                 {!questions ? (
@@ -70,7 +87,7 @@ function page({ params, searchParams }) {
                 )}
               </div>
             </div>
-          </main> */}
+          </main>
         </div>
       </div>
     </div>

@@ -52,7 +52,7 @@ function Navbar({}) {
         id="menu"
         className="max-md:absolute max-md:top-0 max-md:z-10 max-md:left-0 max-md:w-0 max-md:transition-all max-md:duration-300 max-md:overflow-hidden max-md:h-full max-md:bg-white/50 max-md:backdrop-blur max-md:flex-col max-md:justify-center flex items-center gap-8 font-medium"
       >
-        {pathName === "/login" || pathName === "/signup"
+        {pathName === "/sign-in" || pathName === "/sign-up"
           ? ""
           : links.map((link) => {
               const isActive =
