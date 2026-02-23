@@ -1,7 +1,15 @@
 import React from "react";
 import Link from "next/link";
+import { stackServerApp } from "@/stack/server";
 
-export default function Hero() {
+export default async function Hero() {
+  const user = await stackServerApp.getUser();
+  if (user) {
+    console.log("User is signed in:", user);
+  } else {
+    console.log("User is not signed in");
+  }
+
   return (
     <section className="flex flex-col items-center bg-[url('https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/hero/gradientBg.svg')] bg-cover text-gray-800 pb-16 text-sm">
       <div className="flex flex-wrap items-center justify-center p-1.5 mt-32 rounded-full border border-indigo-100 text-xs">
@@ -32,10 +40,15 @@ export default function Hero() {
         A high-performance, serverless Postgres database that helps you ship
         fast and scale without limits.
       </p>
-      <Link href={"/login"}>
+      <Link href={user ? "/practice_exercises" : "/login"}>
         {" "}
         <button className="flex items-center gap-2 bg-slate-800 hover:bg-slate-900 text-white px-8 py-3 mt-8 rounded-full transition cursor-pointer">
-          <span>get started for free</span>
+          {user ? (
+            <span>Continue with your studies</span>
+          ) : (
+            <span>get started for free</span>
+          )}
+
           <svg
             width="20"
             height="20"

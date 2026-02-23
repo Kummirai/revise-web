@@ -1,4 +1,5 @@
 "use client";
+import { UserButton } from "@stackframe/stack";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -71,13 +72,8 @@ function Navbar({}) {
                 </Link>
               );
             })}
-        {pathName === "/login" || pathName === "/signup" ? (
-          ""
-        ) : (
-          <button className="md:hidden bg-slate-800 hover:bg-slate-900 text-white px-8 py-3 rounded-full font-medium transition">
-            Login
-          </button>
-        )}
+
+        {/* <UserButton className="md:hidden bg-slate-800 hover:bg-slate-900 text-white px-8 py-3 rounded-full font-medium transition" /> */}
 
         <button
           id="close-menu"
@@ -99,19 +95,8 @@ function Navbar({}) {
           </svg>
         </button>
       </div>
-      {pathName === "/login" || pathName === "/signup" ? (
-        ""
-      ) : (
-        <Link href={"/login"}>
-          <button
-            className={
-              "hidden md:block bg-slate-800 hover:bg-slate-900 text-white px-6 py-2.5 rounded-full font-medium transition cursor-pointer"
-            }
-          >
-            Login
-          </button>
-        </Link>
-      )}
+
+      <UserButton className="hidden" />
 
       <button
         id="open-menu"

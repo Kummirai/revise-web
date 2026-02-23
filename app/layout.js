@@ -1,4 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
+import { StackProvider, StackTheme } from "@stackframe/stack";
+import { stackClientApp } from "../stack/client";
 import "./globals.css";
 import Navbar from "../components/home/Navbar";
 import Footer from "../components/home/Footer";
@@ -27,13 +29,13 @@ export default async function RootLayout({ children }) {
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      ><StackProvider app={stackClientApp}><StackTheme>
         <div>
           <Navbar pathname={pathname} />
           {children}
           <Footer />
         </div>
-      </body>
+      </StackTheme></StackProvider></body>
     </html>
   );
 }
