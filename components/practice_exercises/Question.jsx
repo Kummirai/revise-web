@@ -6,6 +6,25 @@ function Question({ questions }) {
   const [correct_answer, setCorrectAnswer] = useState("");
   const [isSelected, setIsSelected] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState("");
+  const [explanation, setExplanation] = useState("");
+  const [showQuestionExplanation, setShowQuestionExplanation] = useState(false);
+
+  const handleAnswer = (e) => {
+    console.log(e.target.value);
+  };
+
+  const showExplanation = (id) => {
+    const selectedQuestion = questions.find(
+      (question) => question.question_id === id,
+    );
+
+    console.log(selectedQuestion);
+
+    setCurrentQuestion(id);
+    setIsSelected(false);
+    setShowQuestionExplanation(!showQuestionExplanation);
+    setExplanation(selectedQuestion.explanation);
+  };
 
   const checkCorrectAnswer = (id) => {
     const selectedQuestion = questions.find(
@@ -13,7 +32,8 @@ function Question({ questions }) {
     );
 
     setCurrentQuestion(id);
-    setIsSelected(true);
+    setShowQuestionExplanation(false);
+    setIsSelected(!isSelected);
     setCorrectAnswer(selectedQuestion.correct_answer);
   };
 
@@ -42,7 +62,9 @@ function Question({ questions }) {
                   })
                 ) : (
                   <input
+                    key={question.question_id}
                     type="text"
+                    onChange={(e) => handleAnswer(e)}
                     className="border border-blue-100 mt-2  p-1 rounded-md"
                   />
                 )}
@@ -54,9 +76,50 @@ function Question({ questions }) {
                     : "hidden"
                 }
               >
-                <p className="text-bold text-green-xl my-2">{correct_answer}</p>
+                <div className="flex items-center space-x-2.5 border my-3 border-green-500/30 rounded-md bg-green-100 p-1 text-md text-green-600">
+                  <p className="pl-3">This correct answer is: </p>
+                  <div className="flex items-center space-x-1 bg-green-500 text-white border border-green-500 rounded-md px-3 py-1">
+                    <p> {correct_answer}</p>
+                  </div>
+                </div>
               </div>
-              <div className="flex mt-3 gap-2">
+              <div
+                className={
+                  currentQuestion === question.question_id &&
+                  showQuestionExplanation
+                    ? "flex"
+                    : "hidden"
+                }
+              >
+                <div className="flex items-center space-x-2.5 border my-3 border-green-500/30 rounded-md bg-green-100 p-1 text-md text-green-600">
+                  <p className="pl-3">Explanation</p>
+                  <div className="flex items-center space-x-1 bg-green-500 text-white border border-green-500 rounded-md px-3 py-1">
+                    <p> {explanation}</p>
+                  </div>
+                </div>
+              </div>
+              <div className="grid lg:grid-cols-3 my-3 gap-2">
+                <button
+                  type="button"
+                  className="flex items-center gap-2.5 border border-gray-500/30 px-4 py-2 text-sm text-gray-800 rounded bg-white hover:text-blue-400 hover:bg-blue-400/10 hover:border-blue-400/30 active:scale-95 transition hover:cursor-pointer"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M3.5 12.5V1.003S3.5.5 4 .5h11s.5.002.5.502v13s0 1.498-1.5 1.498H2s-1.5.002-1.5-1.998v-7.5S.5 5.5 1 5.5h1m4.5-2H9m-2.5 2h6m-6 2h6m-6 2h6m-6 2h6"
+                      stroke="#60A5FA"
+                      strokeWidth="1.2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  Check Your Answer
+                </button>
                 <button
                   onClick={() => checkCorrectAnswer(question.question_id)}
                   type="button"
@@ -82,6 +145,7 @@ function Question({ questions }) {
                 </button>
 
                 <button
+                  onClick={() => showExplanation(question.question_id)}
                   type="button"
                   className="flex items-center gap-2.5 border border-gray-500/30 px-4 py-2 text-sm text-gray-800 rounded bg-white hover:text-blue-400 hover:bg-blue-400/10 hover:border-blue-400/30 active:scale-95 transition hover:cursor-pointer"
                 >
