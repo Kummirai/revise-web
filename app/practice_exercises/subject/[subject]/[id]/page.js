@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import SelectTopic from "../../../../../components/practice_exercises/SelectTopic";
-import Question from "../../../../../components/practice_exercises/Question";
+import SelectTopic from "@/components/practice_exercises/SelectTopic";
+import Question from "@/components/practice_exercises/Question";
 
 function page({ params, searchParams }) {
   const { id } = React.use(params);
@@ -9,11 +9,11 @@ function page({ params, searchParams }) {
   const [questions, setQuestions] = useState([]);
   const [topics, setTopics] = useState([]);
 
-  const handleSelectTopic = async (id) => {
-    const response = await fetch(`http://localhost:3000/api/questions/${id}`);
-    const data = await response.json();
-    setQuestions(data.questions);
-  };
+  // const handleSelectTopic = async (id) => {
+  //   const response = await fetch(`http://localhost:3000/api/questions/${id}`);
+  //   const data = await response.json();
+  //   setQuestions(data.questions);
+  // };
 
   useEffect(() => {
     const getTopics = async () => {
@@ -21,6 +21,8 @@ function page({ params, searchParams }) {
         `http://localhost:3000/api/exercises/topics/${parseInt(id)}`,
       );
       const data = await response.json();
+      console.log(data);
+
       setTopics(data.topics);
     };
     getTopics();
@@ -58,7 +60,7 @@ function page({ params, searchParams }) {
         </div>
 
         <div className="flex flex-col flex-1">
-          <main>
+          {/* <main>
             <div className="py-6">
               <div className="px-4 mx-auto max-w-7xl sm:px-6 md:px-8">
                 {!questions ? (
@@ -68,7 +70,7 @@ function page({ params, searchParams }) {
                 )}
               </div>
             </div>
-          </main>
+          </main> */}
         </div>
       </div>
     </div>

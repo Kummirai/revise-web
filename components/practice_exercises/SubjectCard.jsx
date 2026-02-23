@@ -4,127 +4,23 @@ import React from "react";
 function SubjectCard({ subject }) {
   return (
     <div>
-      <div className="card w-96 bg-base-100 shadow-sm">
+      <div className="card p-5 w-96 bg-base-100 shadow-sm">
         <div className="card-body">
-          <span className="badge badge-xs badge-warning">
-            Grade {subject.grade_range_start} - {subject.grade_range_end}
-          </span>
           <div className="flex justify-between">
             <h2 className="text-3xl font-bold line-clamp-1">
               {subject.subject_name}
             </h2>
             {/* <span className="text-xl">Grade {subject.grade_range_start}</span> */}
           </div>
-          <ul className="mt-6 flex flex-col gap-2 text-xs">
+          <ul className="mt-6 flex flex-col font-light text-gray-600 gap-2 text-md">
             <li>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="size-4 me-2 inline-block text-success"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M5 13l4 4L19 7"
-                />
-              </svg>
               <span>{subject.description}</span>
-            </li>
-            <li>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="size-4 me-2 inline-block text-success"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M5 13l4 4L19 7"
-                />
-              </svg>
-              <span>Customizable style templates</span>
-            </li>
-            <li>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="size-4 me-2 inline-block text-success"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M5 13l4 4L19 7"
-                />
-              </svg>
-              <span>Batch processing capabilities</span>
-            </li>
-            <li>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="size-4 me-2 inline-block text-success"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M5 13l4 4L19 7"
-                />
-              </svg>
-              <span>AI-driven image enhancements</span>
-            </li>
-            <li className="opacity-50">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="size-4 me-2 inline-block text-base-content/50"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M5 13l4 4L19 7"
-                />
-              </svg>
-              <span className="line-through">Seamless cloud integration</span>
-            </li>
-            <li className="opacity-50">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="size-4 me-2 inline-block text-base-content/50"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M5 13l4 4L19 7"
-                />
-              </svg>
-              <span className="line-through">
-                Real-time collaboration tools
-              </span>
             </li>
           </ul>
           <div className="mt-6">
             <Link
               href={`/practice_exercises/subject/${subject.subject_name}/${subject.subject_id}`}
-              className="btn btn-primary btn-block"
+              className="flex items-center gap-2 border border-slate-800 hover:bg-slate-900 hover:text-white text-slate-800 text-xs px-4 py-2 mt-8 rounded-md w-fit transition hover:cursor-pointer"
             >
               Exercises
             </Link>

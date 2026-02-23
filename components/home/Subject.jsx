@@ -29,17 +29,16 @@ function Subject({ subject }) {
       )}
 
       <div className="relative z-10 bg-white p-6 h-full w-full rounded-[10px] flex flex-col items-center justify-center text-center">
-        <img
-          src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200"
-          alt="Profile Avatar"
-          className="w-24 h-24 rounded-full shadow-md my-4"
-        />
-        <h2 className="text-2xl font-bold text-gray-800 mb-1 line-clamp-1">
+        <h2 className="text-4xl font-bold text-gray-800 mb-4 line-clamp-1">
           {subject.subject_name}{" "}
         </h2>
-        {/* <p className="text-sm text-indigo-500 font-medium mb-4">
-          Software Developer
-        </p> */}
+        <p className=" text-indigo-500 text-xl font-light  mb-1 line-clamp-1">
+          <span className="mr-2">Grade</span>
+          <span>{subject.grade_range_start}</span>
+          <span className="mx-2">-</span>
+          <span>{subject.grade_range_end}</span>
+        </p>
+
         <p className="text-sm text-gray-500 mb-4 px-4">{subject.description}</p>
         <div className="flex space-x-4 mb-4 text-xl text-indigo-600">
           <Link href={"/practice_exercises"}>

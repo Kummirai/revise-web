@@ -1,14 +1,30 @@
-import SubjectCard from "../../components/practice_exercises/SubjectCard";
-import React from "react";
-import { createServerClient } from "../../utils/supabase/server";
-import { cookies } from "next/headers";
+import SubjectCard from "@/components/practice_exercises/SubjectCard";
 
-async function page() {
-  const cookieStore = await cookies();
-  const supabase = createServerClient(cookieStore);
+async function page({}) {
+  async function fetchSubjects() {
+    try {
+      const response = await fetch("http://localhost:3000/api/subjects");
+      const data = await response.json();
 
-  const { data: subjects } = await supabase.from("subjects").select();
+      if (!response.ok) {
+        throw new Error(data.error || `HTTP error! status: ${response.status}`);
+      }
 
+      const subjects = data.subjects?.rows || [];
+
+      if (subjects.length === 0) {
+        console.log("No subjects found");
+        return [];
+      }
+
+      return subjects;
+    } catch (error) {
+      console.error("Failed to fetch subjects:", error.message);
+      return [];
+    }
+  }
+
+  const subjects = await fetchSubjects();
   return (
     <div>
       <div className="pt-10 sm:p-20 grid sm:grid-cols-3 gap-5">
