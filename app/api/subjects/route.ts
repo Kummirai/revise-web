@@ -1,17 +1,9 @@
-import { createServerClient } from "../../../utils/supabase/server";
-import { cookies } from "next/headers";
+import { query } from "@/lib/db";
 import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
-    const cookieStore = await cookies;
-    const supabase = createServerClient(cookieStore);
-    const { data: subjects, error } = await supabase.from("subjects").select();
-
-    if (error) {
-      console.log("Supabase error:", error);
-      return NextResponse.json({ error: error.message }, { status: 500 });
-    }
+    const subjects = await query(`SELECT *FROM subjects`);
 
     return NextResponse.json({ subjects });
   } catch (error) {

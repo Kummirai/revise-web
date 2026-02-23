@@ -4,8 +4,6 @@ import Link from "next/link";
 import React from "react";
 
 function Subject({ subject }) {
-  console.log(subject);
-
   const [visible, setVisible] = React.useState(false);
   const [position, setPosition] = React.useState({ x: 0, y: 0 });
   const divRef = React.useRef(null);

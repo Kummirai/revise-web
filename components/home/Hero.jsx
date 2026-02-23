@@ -4,11 +4,6 @@ import { stackServerApp } from "@/stack/server";
 
 export default async function Hero() {
   const user = await stackServerApp.getUser();
-  if (user) {
-    console.log("User is signed in:", user);
-  } else {
-    console.log("User is not signed in");
-  }
 
   return (
     <section className="flex flex-col items-center bg-[url('https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/hero/gradientBg.svg')] bg-cover text-gray-800 pb-16 text-sm">
