@@ -2,12 +2,16 @@
 import React, { useEffect, useState } from "react";
 import SelectTopic from "@/components/practice_exercises/SelectTopic";
 import Question from "@/components/practice_exercises/Question";
+import LoadingSpinner from "@/components/practice_exercises/LoadingSpinner";
+
+import NoContent from "@/components/practice_exercises/NoContent";
 
 function page({ params, searchParams }) {
   const { id } = React.use(params);
 
   const [questions, setQuestions] = useState([]);
   const [topics, setTopics] = useState([]);
+  const [fetchingTopics, setFetchingTopics] = useState(false);
 
   const handleSelectTopic = async (id) => {
     const response = await fetch(`http://localhost:3000/api/questions/${id}`);
@@ -23,11 +27,14 @@ function page({ params, searchParams }) {
 
   useEffect(() => {
     const getTopics = async () => {
+      setFetchingTopics(true);
+
       const response = await fetch(
         `http://localhost:3000/api/exercises/topics/${id}`,
       );
 
       const data = await response.json();
+      setFetchingTopics(false);
 
       if (!response.ok) {
         throw new Error(data.error || `HTTP error! status: ${response.status}`);
@@ -44,6 +51,13 @@ function page({ params, searchParams }) {
     };
     getTopics();
   }, [id]);
+
+  if (fetchingTopics) {
+    return <LoadingSpinner />;
+  }
+  if (topics.length === 0) {
+    return <NoContent />;
+  }
 
   return (
     <div className="px-15 py-5">
